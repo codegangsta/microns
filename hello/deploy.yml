@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name:  micron-hello
-        image:  ko://.
+        image:  ko://github.com/codegangsta/microns/hello
         imagePullPolicy: IfNotPresent
       restartPolicy: Always
 ---
