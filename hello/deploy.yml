@@ -1,0 +1,30 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  micron-hello
+  namespace: default
+  labels:
+    app:  micron-hello
+spec:
+  selector:
+    matchLabels:
+      app: micron-hello
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  micron-hello
+    spec:
+      containers:
+      - name:  micron-hello
+        image:  ko://.
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+---
+
